@@ -1,187 +1,274 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitrina Exclusiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:wght@400;500&display=swap');
-  .g-root { font-family: 'DM Sans', sans-serif; color: var(--color-text-primary); }
-  .g-nav { display:flex; align-items:center; justify-content:space-between; padding:14px 24px; background:#0d0d14; border-radius:var(--border-radius-lg); margin-bottom:16px; }
-  .g-logo { font-family:'Orbitron',monospace; font-size:18px; font-weight:900; color:#00e5a0; letter-spacing:2px; }
-  .g-nav-links { display:flex; gap:20px; }
-  .g-nav-links span { font-size:13px; color:#a0a0b8; cursor:pointer; }
-  .g-nav-links span:hover { color:#00e5a0; }
-  .g-btn-nav { background:#00e5a0; color:#0d0d14; font-size:12px; font-weight:500; padding:8px 16px; border-radius:6px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; }
-  .g-hero { background:#0d0d14; border-radius:var(--border-radius-lg); padding:48px 32px 40px; text-align:center; margin-bottom:16px; position:relative; overflow:hidden; }
-  .g-hero-accent { position:absolute; top:-40px; left:50%; transform:translateX(-50%); width:400px; height:200px; background:radial-gradient(ellipse, rgba(0,229,160,0.12) 0%, transparent 70%); pointer-events:none; }
-  .g-hero h1 { font-family:'Orbitron',monospace; font-size:28px; font-weight:900; color:#fff; margin:0 0 10px; line-height:1.2; }
-  .g-hero h1 span { color:#00e5a0; }
-  .g-hero p { font-size:14px; color:#8888aa; margin:0 0 24px; max-width:420px; margin-left:auto; margin-right:auto; }
-  .g-hero-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-  .g-btn-primary { background:#00e5a0; color:#0d0d14; font-size:14px; font-weight:500; padding:12px 28px; border-radius:8px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; }
-  .g-btn-secondary { background:transparent; color:#00e5a0; font-size:14px; font-weight:500; padding:12px 28px; border-radius:8px; border:1px solid #00e5a0; cursor:pointer; font-family:'DM Sans',sans-serif; }
-  .g-section-title { font-size:13px; font-weight:500; color:#8888aa; text-transform:uppercase; letter-spacing:2px; margin:0 0 14px; }
-  .g-games-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:16px; }
-  .g-game-card { background:#0d0d14; border-radius:var(--border-radius-lg); padding:20px 16px; text-align:center; border:1px solid #1e1e2e; cursor:pointer; transition:border-color 0.2s; }
-  .g-game-card:hover { border-color:#00e5a0; }
-  .g-game-card.active { border-color:#00e5a0; background:#0d1f18; }
-  .g-game-icon { font-size:32px; margin-bottom:8px; display:block; }
-  .g-game-name { font-size:13px; font-weight:500; color:#fff; margin:0 0 4px; }
-  .g-game-sub { font-size:11px; color:#666688; }
-  .g-shop { background:#0d0d14; border-radius:var(--border-radius-lg); padding:24px; margin-bottom:16px; border:1px solid #1e1e2e; }
-  .g-shop-header { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
-  .g-shop-icon { font-size:24px; }
-  .g-shop-title { font-family:'Orbitron',monospace; font-size:16px; font-weight:700; color:#fff; }
-  .g-shop-sub { font-size:12px; color:#666688; }
-  .g-packages { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:20px; }
-  .g-pkg { background:#131320; border-radius:8px; padding:16px 12px; text-align:center; border:1px solid #1e1e2e; cursor:pointer; position:relative; }
-  .g-pkg:hover { border-color:#00e5a0; }
-  .g-pkg.popular { border-color:#00e5a0; }
-  .g-pkg-badge { position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:#00e5a0; color:#0d0d14; font-size:10px; font-weight:500; padding:3px 10px; border-radius:4px; white-space:nowrap; }
-  .g-pkg-amount { font-family:'Orbitron',monospace; font-size:20px; font-weight:700; color:#00e5a0; }
-  .g-pkg-unit { font-size:11px; color:#666688; margin:2px 0 8px; }
-  .g-pkg-price { font-size:16px; font-weight:500; color:#fff; }
-  .g-pkg-mxn { font-size:10px; color:#666688; }
-  .g-checkout { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:end; }
-  .g-field label { font-size:12px; color:#8888aa; display:block; margin-bottom:6px; }
-  .g-field input { width:100%; background:#131320; border:1px solid #1e1e2e; border-radius:6px; padding:10px 12px; color:#fff; font-size:13px; font-family:'DM Sans',sans-serif; box-sizing:border-box; }
-  .g-field input:focus { outline:none; border-color:#00e5a0; }
-  .g-field input::placeholder { color:#444466; }
-  .g-btn-buy { background:#00e5a0; color:#0d0d14; font-size:14px; font-weight:500; padding:12px; border-radius:8px; border:none; cursor:pointer; width:100%; font-family:'DM Sans',sans-serif; margin-top:6px; }
-  .g-trust { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
-  .g-trust-item { background:#0d0d14; border-radius:var(--border-radius-md); padding:16px; text-align:center; border:1px solid #1e1e2e; }
-  .g-trust-icon { font-size:22px; margin-bottom:6px; }
-  .g-trust-label { font-size:12px; font-weight:500; color:#fff; margin:0 0 2px; }
-  .g-trust-sub { font-size:11px; color:#666688; }
-  .g-footer { background:#0d0d14; border-radius:var(--border-radius-lg); padding:20px 24px; display:flex; justify-content:space-between; align-items:center; border:1px solid #1e1e2e; }
-  .g-footer-logo { font-family:'Orbitron',monospace; font-size:14px; font-weight:900; color:#00e5a0; }
-  .g-footer-links { display:flex; gap:16px; }
-  .g-footer-links span { font-size:12px; color:#666688; cursor:pointer; }
-  .g-badge-wa { display:inline-flex; align-items:center; gap:6px; background:#1a2e22; color:#00e5a0; font-size:12px; padding:8px 16px; border-radius:6px; border:1px solid #00e5a0; margin-top:12px; cursor:pointer; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#0c0000;color:#f5e8e0;overflow-x:hidden;}
+.hero{background:#0c0000;padding:48px 20px 36px;text-align:center;border-bottom:1px solid #3a0000;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#1a0000;border:1px solid #6b0000;color:#ff4444;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:6px 18px;border-radius:2px;margin-bottom:20px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,64px);font-weight:700;line-height:1.0;color:#fff;margin-bottom:6px;}
+.hero h1 em{color:#cc0000;font-style:italic;}
+.hero-sub{font-size:14px;color:#7a5a5a;letter-spacing:1px;margin-bottom:32px;}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:#cc0000;color:#fff;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 36px;border-radius:2px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;}
+.hero-cta:hover{background:#ff1111;transform:scale(1.03);}
+.stats{display:flex;justify-content:center;gap:0;border-top:1px solid #1a0000;border-bottom:1px solid #1a0000;}
+.stat{flex:1;text-align:center;padding:18px 8px;border-right:1px solid #1a0000;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:#cc0000;}
+.stat-l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#5a3a3a;margin-top:2px;}
+.section-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#6b0000;text-align:center;padding:28px 0 12px;}
+.cats{display:flex;gap:8px;padding:0 20px 20px;overflow-x:auto;scrollbar-width:none;justify-content:center;flex-wrap:wrap;}
+.cats::-webkit-scrollbar{display:none;}
+.chip{background:#110000;border:1px solid #3a0000;color:#9a6060;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:7px 18px;border-radius:2px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.chip:hover,.chip.on{background:#3a0000;border-color:#cc0000;color:#ff8080;}
+.carousel-wrap{position:relative;padding:0 0 20px;}
+.carousel{display:flex;gap:12px;padding:0 20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth;}
+.carousel::-webkit-scrollbar{display:none;}
+.card{flex:0 0 calc(50% - 10px);scroll-snap-align:start;position:relative;border-radius:4px;overflow:hidden;cursor:pointer;background:#1a0000;aspect-ratio:2/3;border:1px solid #2a0000;transition:border-color 0.2s;}
+.card:hover{border-color:#cc0000;}
+.card-img{width:100%;height:100%;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:64px;background:var(--bg);filter:blur(14px) brightness(0.4);transition:filter 0.3s;}
+.lock-layer{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.lock-icon{width:38px;height:38px;border:2px solid #cc0000;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,0,0,0.7);}
+.lock-icon i{font-size:18px;color:#cc0000;}
+.lock-text{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#cc0000;}
+.card-footer{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,0,0,0.98) 60%);padding:36px 14px 14px;}
+.card-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#cc0000;margin-bottom:4px;}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:4px;}
+.card-price{font-size:13px;color:#ff6060;font-weight:500;}
+.card-btn{display:block;width:100%;margin-top:10px;background:#cc0000;color:#fff;border:none;border-radius:2px;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:9px;cursor:pointer;font-weight:600;transition:background 0.2s;}
+.card-btn:hover{background:#ff1111;}
+.dots{display:flex;justify-content:center;gap:6px;padding:12px 0 4px;}
+.dot{width:6px;height:6px;border-radius:50%;background:#3a0000;cursor:pointer;transition:all 0.2s;}
+.dot.on{background:#cc0000;width:20px;border-radius:3px;}
+.bottom-cta{padding:36px 20px;text-align:center;border-top:1px solid #1a0000;}
+.bottom-cta p{font-size:13px;color:#5a3a3a;letter-spacing:1px;margin-bottom:20px;}
+.tg-btn{display:inline-flex;align-items:center;gap:10px;background:#1a0000;border:1px solid #cc0000;color:#ff6060;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 32px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.tg-btn:hover{background:#cc0000;color:#fff;}
+.tg-btn i{font-size:18px;}
+.footer-bar{background:#080000;border-top:1px solid #2a0000;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-note{font-size:11px;color:#4a2a2a;letter-spacing:1px;}
+.footer-note span{color:#cc0000;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:50;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:#120000;border:1px solid #cc0000;border-radius:4px;padding:36px 28px 28px;max-width:340px;width:90%;text-align:center;animation:pop 0.3s cubic-bezier(.34,1.56,.64,1);}
+@keyframes pop{from{opacity:0;transform:scale(0.85) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.modal-badge{display:inline-block;background:#cc0000;color:#fff;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:16px;}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.2;}
+.modal-desc{font-size:13px;color:#7a5a5a;line-height:1.7;margin-bottom:10px;}
+.modal-price{font-size:20px;font-family:'Cormorant Garamond',serif;color:#cc0000;font-weight:700;margin-bottom:22px;}
+.modal-tg{display:flex;align-items:center;justify-content:center;gap:10px;background:#cc0000;color:#fff;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 24px;border-radius:2px;border:none;cursor:pointer;width:100%;margin-bottom:10px;transition:background 0.2s;}
+.modal-tg:hover{background:#ff1111;}
+.modal-tg i{font-size:18px;}
+.modal-close{background:none;border:none;color:#4a2a2a;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:8px;font-family:'Outfit',sans-serif;transition:color 0.2s;}
+.modal-close:hover{color:#cc0000;}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:#1a0000;border:1px solid #cc0000;color:#ff8080;font-size:12px;letter-spacing:1px;padding:10px 22px;border-radius:2px;white-space:nowrap;opacity:0;transition:all 0.3s;pointer-events:none;z-index:60;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
+</head>
+<body>
 
-<div class="g-root">
-
-  <nav class="g-nav">
-    <div class="g-logo">⚡ TOPUP.MX</div>
-    <div class="g-nav-links">
-      <span>Inicio</span>
-      <span>Juegos</span>
-      <span>Mis pedidos</span>
-      <span>Soporte</span>
-    </div>
-    <button class="g-btn-nav">Comprar ahora</button>
-  </nav>
-
-  <div class="g-hero">
-    <div class="g-hero-accent"></div>
-    <h1>Recarga tu juego<br><span>al instante</span></h1>
-    <p>Top-ups rápidos, seguros y al mejor precio. Pagos con Mercado Pago, OXXO y tarjeta.</p>
-    <div class="g-hero-btns">
-      <button class="g-btn-primary">Ver paquetes</button>
-      <button class="g-btn-secondary">¿Cómo funciona?</button>
-    </div>
-  </div>
-
-  <p class="g-section-title">Selecciona tu juego</p>
-  <div class="g-games-grid">
-    <div class="g-game-card active">
-      <span class="g-game-icon">💎</span>
-      <div class="g-game-name">Free Fire</div>
-      <div class="g-game-sub">Diamantes</div>
-    </div>
-    <div class="g-game-card">
-      <span class="g-game-icon">⚔️</span>
-      <div class="g-game-name">Mobile Legends</div>
-      <div class="g-game-sub">Diamantes</div>
-    </div>
-    <div class="g-game-card">
-      <span class="g-game-icon">🌸</span>
-      <div class="g-game-name">Genshin Impact</div>
-      <div class="g-game-sub">Genesis Crystals</div>
-    </div>
-    <div class="g-game-card">
-      <span class="g-game-icon">🎮</span>
-      <div class="g-game-name">Roblox</div>
-      <div class="g-game-sub">Robux</div>
-    </div>
-  </div>
-
-  <div class="g-shop">
-    <div class="g-shop-header">
-      <span class="g-shop-icon">💎</span>
-      <div>
-        <div class="g-shop-title">Free Fire — Diamantes</div>
-        <div class="g-shop-sub">Entrega en menos de 30 minutos</div>
-      </div>
-    </div>
-    <div class="g-packages">
-      <div class="g-pkg">
-        <div class="g-pkg-amount">100</div>
-        <div class="g-pkg-unit">diamantes</div>
-        <div class="g-pkg-price">$25</div>
-        <div class="g-pkg-mxn">MXN</div>
-      </div>
-      <div class="g-pkg">
-        <div class="g-pkg-amount">310</div>
-        <div class="g-pkg-unit">diamantes</div>
-        <div class="g-pkg-price">$65</div>
-        <div class="g-pkg-mxn">MXN</div>
-      </div>
-      <div class="g-pkg popular">
-        <div class="g-pkg-badge">⭐ Popular</div>
-        <div class="g-pkg-amount">520</div>
-        <div class="g-pkg-unit">diamantes</div>
-        <div class="g-pkg-price">$105</div>
-        <div class="g-pkg-mxn">MXN</div>
-      </div>
-      <div class="g-pkg">
-        <div class="g-pkg-amount">1060</div>
-        <div class="g-pkg-unit">diamantes</div>
-        <div class="g-pkg-price">$195</div>
-        <div class="g-pkg-mxn">MXN</div>
-      </div>
-    </div>
-    <div class="g-checkout">
-      <div class="g-field">
-        <label>ID del jugador</label>
-        <input type="text" placeholder="Ej. 123456789" />
-      </div>
-      <div class="g-field">
-        <label>Confirma tu ID</label>
-        <input type="text" placeholder="Repite tu ID" />
-      </div>
-    </div>
-    <button class="g-btn-buy">Ir a pagar con Mercado Pago →</button>
-    <div style="text-align:center;">
-      <div class="g-badge-wa">
-        <i class="ti ti-brand-whatsapp" aria-hidden="true" style="font-size:16px;"></i>
-        ¿Dudas? Escríbenos por WhatsApp
-      </div>
-    </div>
-  </div>
-
-  <div class="g-trust">
-    <div class="g-trust-item">
-      <div class="g-trust-icon">⚡</div>
-      <div class="g-trust-label">Entrega rápida</div>
-      <div class="g-trust-sub">Menos de 30 min</div>
-    </div>
-    <div class="g-trust-item">
-      <div class="g-trust-icon">🔒</div>
-      <div class="g-trust-label">Pago seguro</div>
-      <div class="g-trust-sub">Mercado Pago / OXXO</div>
-    </div>
-    <div class="g-trust-item">
-      <div class="g-trust-icon">💬</div>
-      <div class="g-trust-label">Soporte 24/7</div>
-      <div class="g-trust-sub">Vía WhatsApp</div>
-    </div>
-  </div>
-
-  <div class="g-footer">
-    <div class="g-footer-logo">⚡ TOPUP.MX</div>
-    <div class="g-footer-links">
-      <span>Aviso de privacidad</span>
-      <span>Términos de uso</span>
-      <span>Contacto</span>
-    </div>
-  </div>
-
+<div class="hero">
+  <div class="hero-eyebrow"><i class="ti ti-flame"></i> Contenido adulto exclusivo</div>
+  <h1>Sin filtros.<br><em>Sin límites.</em></h1>
+  <div class="hero-sub">Acceso premium · Solo mayores de 18</div>
+  <button class="hero-cta" onclick="openModal(null)">
+    <i class="ti ti-brand-telegram"></i> Ver todo en Telegram
+  </button>
 </div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n" id="sn">1,240</div><div class="stat-l">Suscriptores</div></div>
+  <div class="stat"><div class="stat-n">60+</div><div class="stat-l">Packs</div></div>
+  <div class="stat"><div class="stat-n">&#9733; 5.0</div><div class="stat-l">Calificación</div></div>
+</div>
+
+<div class="section-label">— elige una categoría —</div>
+
+<div class="cats">
+  <div class="chip on" onclick="setcat(this,'all')">Todos</div>
+  <div class="chip" onclick="setcat(this,'foto')">Fotos</div>
+  <div class="chip" onclick="setcat(this,'video')">Videos</div>
+  <div class="chip" onclick="setcat(this,'pack')">Packs</div>
+  <div class="chip" onclick="setcat(this,'custom')">Custom</div>
+</div>
+
+<div class="carousel-wrap">
+  <div class="carousel" id="car"></div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<div class="bottom-cta">
+  <p>¿Quieres algo completamente tuyo?</p>
+  <button class="tg-btn" onclick="openModal({title:'Contenido custom',tag:'Personalizado',price:'Precio acordado',desc:'Dime exactamente qué quieres. Lo hago a tu medida, solo para ti.'})">
+    <i class="ti ti-send"></i> Pedir contenido custom
+  </button>
+</div>
+
+<div class="footer-bar">
+  <div class="footer-note">Compra y venta solo por <span>Telegram</span></div>
+  <button class="tg-btn" style="padding:10px 20px;font-size:11px;" onclick="openModal(null)">
+    <i class="ti ti-brand-telegram"></i> Contactar
+  </button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="mw" onclick="bgClose(event)">
+  <div class="modal">
+    <div class="modal-badge" id="mb">Exclusivo</div>
+    <h3 id="mh">Contenido premium</h3>
+    <div class="modal-desc" id="md">Compra y venta directamente por Telegram. Pago seguro y entrega inmediata.</div>
+    <div class="modal-price" id="mp"></div>
+    <button class="modal-tg" onclick="goTg()">
+      <i class="ti ti-brand-telegram"></i> Ir a Telegram ahora
+    </button>
+    <button class="modal-close" onclick="closeModal()">✕ Cerrar</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// DATOS DE LOS PACKS — edita aquí tus productos
+// Para usar imagen real: cambia emoji por la ruta de tu foto
+// Ejemplo: img:'fotos/pack1.jpg'
+// ============================================================
+const all = [
+  {tag:'Pack',    title:'Pack Básico',   price:'$150 MXN',      cat:'pack',   bg:'#1a0000', img:'https://cdni.pornpics.com/460/1/328/96330239/96330239_013_fea1.jpg'},
+  {tag:'Fotos',   title:'Set 20 fotos',  price:'$200 MXN',      cat:'foto',   bg:'#100010', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-Zf3d-ehfRlTVkn_MHpmXSz_pFgWNeHdIng&s'},
+  {tag:'Video',   title:'Video 5 min',   price:'$300 MXN',      cat:'video',  bg:'#0a0008', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqbmZAN3mY-fc57TqsYfmfbSdLzDaC_INe3Q&s'},
+  {tag:'Pack 🔥', title:'Pack Premium',  price:'$500 MXN',      cat:'pack',   bg:'#1a0800', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4bufoUZgydUamFueXOUt246hnuaomMEnsOw&s'},
+  {tag:'Custom',  title:'A tu medida',   price:'Precio personal',cat:'custom', bg:'#000a10', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6cPMZQRtVwSZtJdBLu5lgrv7jeYYQ4OYSiQ&s'},
+  {tag:'Video',   title:'Video 10 min',  price:'$500 MXN',      cat:'video',  bg:'#060010', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYtVeduh3VwsMfW2IyhESAzOW9pSJ5qpg6rw&s'},
+  {tag:'Fotos',   title:'Set Especial',  price:'$350 MXN',      cat:'foto',   bg:'#100006', img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY9kk9b5HoRm_lNtlS8GOd3vNLKA5cP-2F3A&s'},
+    {tag:'Pack',    title:'Pack VIP',      price:'$800 MXN',      cat:'pack',   bg:'#0a0a00', img:'https://cdni.pornpics.com/460/1/328/96330239/96330239_013_fea1.jpg'},
+    ];
+
+// ============================================================
+// CAMBIA ESTE ENLACE POR TU USUARIO DE TELEGRAM
+// ============================================================
+const TELEGRAM_URL = 'https://t.me/TU_USUARIO_AQUI';
+
+let cur = 0, items = all, scTimer = null;
+
+function build(list) {
+  const car = document.getElementById('car');
+  const dots = document.getElementById('dots');
+  car.innerHTML = '';
+  dots.innerHTML = '';
+  items = list;
+  cur = 0;
+
+  list.forEach((d, i) => {
+    const c = document.createElement('div');
+    c.className = 'card';
+
+    // Si el item tiene propiedad 'img', usa imagen real; si no, usa emoji
+    const imgContent = d.img
+      ? `<img src="${d.img}" style="width:100%;height:100%;object-fit:cover;filter:blur(14px) brightness(0.4);">`
+      : `<div class="card-img" style="--bg:${d.bg};">${d.emoji}</div>`;
+
+    c.innerHTML = `
+      ${imgContent}
+      <div class="lock-layer">
+        <div class="lock-icon"><i class="ti ti-lock"></i></div>
+        <div class="lock-text">Solo Telegram</div>
+      </div>
+      <div class="card-footer">
+        <div class="card-tag">${d.tag}</div>
+        <div class="card-name">${d.title}</div>
+        <div class="card-price">${d.price}</div>
+        <button class="card-btn" onclick="event.stopPropagation();openModal(${i})">Ver completo →</button>
+      </div>`;
+    c.onclick = () => openModal(i);
+    car.appendChild(c);
+
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' on' : '');
+    dot.onclick = () => scrollToCard(i);
+    dots.appendChild(dot);
+  });
+
+  car.addEventListener('scroll', onScroll, {passive: true});
+}
+
+function onScroll() {
+  clearTimeout(scTimer);
+  scTimer = setTimeout(() => {
+    const car = document.getElementById('car');
+    const cardW = car.querySelector('.card') ? car.querySelector('.card').offsetWidth + 12 : 1;
+    const i = Math.min(Math.round(car.scrollLeft / cardW), items.length - 1);
+    setDot(i);
+  }, 80);
+}
+
+function setDot(i) {
+  cur = i;
+  document.querySelectorAll('.dot').forEach((d, idx) => {
+    d.className = 'dot' + (idx === i ? ' on' : '');
+  });
+}
+
+function scrollToCard(i) {
+  const car = document.getElementById('car');
+  const card = car.querySelector('.card');
+  if (!card) return;
+  const cardW = card.offsetWidth + 12;
+  car.scrollTo({left: cardW * i, behavior: 'smooth'});
+  setDot(i);
+}
+
+function setcat(el, cat) {
+  document.querySelectorAll('.chip').forEach(c => c.className = 'chip');
+  el.className = 'chip on';
+  const list = cat === 'all' ? all : all.filter(d => d.cat === cat);
+  build(list);
+  toast(cat === 'all' ? 'Mostrando todo el contenido' : 'Filtro: ' + cat);
+}
+
+function openModal(idx) {
+  const d = typeof idx === 'number' ? items[idx] : idx;
+  document.getElementById('mb').textContent = d ? d.tag : 'Telegram';
+  document.getElementById('mh').textContent = d ? d.title : 'Contenido exclusivo';
+  document.getElementById('md').textContent = d && d.desc
+    ? d.desc
+    : '⚠️ Compra y venta únicamente por Telegram. Escríbeme y te atiendo de inmediato 🔥';
+  document.getElementById('mp').textContent = d && d.price ? d.price : '';
+  document.getElementById('mw').classList.add('open');
+}
+
+function closeModal() { document.getElementById('mw').classList.remove('open'); }
+function bgClose(e) { if (e.target.id === 'mw') closeModal(); }
+
+function goTg() {
+  toast('Abriendo Telegram... 🔥');
+  closeModal();
+  window.open(TELEGRAM_URL, '_blank');
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// Contador animado de suscriptores
+let n = 1240;
+setInterval(() => {
+  if (Math.random() > 0.6) {
+    n++;
+    document.getElementById('sn').textContent = n.toLocaleString();
+  }
+}, 4000);
+
+build(all);
+</script>
+</body>
+</html>
